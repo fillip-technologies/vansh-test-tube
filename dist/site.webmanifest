@@ -1,0 +1,12 @@
+{
+  "name": "Vansh Test Tube Baby",
+  "short_name": "Vansh",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#d94a82",
+  "background_color": "#fffcfd",
+  "display": "browser",
+  "start_url": "/"
+}
