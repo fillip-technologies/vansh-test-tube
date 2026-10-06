@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Serve the Vite production build from /dist
+RewriteRule ^$ dist/index.html [L]
+
+# Static files from dist
+RewriteRule ^(assets|images)/(.*)$ dist/$1/$2 [L]
+RewriteRule ^(favicon\.ico|apple-touch-icon\.png|icon-192\.png|icon-512\.png|robots\.txt)$ dist/$1 [L]
+
+# React Router - send all other routes to dist/index.html
+RewriteRule ^.*$ dist/index.html [L]
