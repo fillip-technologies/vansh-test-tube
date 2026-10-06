@@ -1,5 +1,6 @@
 import { useParams } from 'react-router'
 import Consultation from '../components/Consultation.jsx'
+import Seo from '../components/Seo.jsx'
 import FinalCta from '../components/FinalCta.jsx'
 import RelatedServices from '../components/service/RelatedServices.jsx'
 import ServiceCareTeam from '../components/service/ServiceCareTeam.jsx'
@@ -18,27 +19,34 @@ import ServiceTimeline from '../components/service/ServiceTimeline.jsx'
 import ServiceWhyVansh from '../components/service/ServiceWhyVansh.jsx'
 import { CLINIC } from '../config/site.js'
 import { getService } from '../lib/services.js'
+import { CLINIC_ID, absoluteUrl, breadcrumbLd, faqLd } from '../lib/seo.js'
 import NotFound from './NotFound.jsx'
 
-// Page metadata from services.json. React 19 hoists these tags into <head>.
+// Page metadata + structured data from services.json.
 function ServiceSeo({ service }) {
-  const origin = CLINIC.siteUrl || window.location.origin
-  const url = `${origin}/treatments/${service.slug}`
+  const path = `/treatments/${service.slug}`
   const title = service.seo?.title ?? `${service.name} | ${CLINIC.name}`
-  const description = service.seo?.description ?? service.hero.description
-  const image = `${origin}${service.seo?.ogImage ?? service.hero.image}`
   return (
-    <>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <link rel="canonical" href={url} />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
-      <meta name="twitter:card" content="summary_large_image" />
-    </>
+    <Seo
+      title={title}
+      description={service.seo?.description ?? service.hero.description}
+      image={service.seo?.ogImage ?? service.hero.image}
+      jsonLd={[
+        {
+          '@type': 'MedicalWebPage',
+          name: title,
+          url: absoluteUrl(path),
+          about: { '@type': 'MedicalTherapy', name: service.fullName ?? service.name },
+          publisher: { '@id': CLINIC_ID },
+        },
+        breadcrumbLd([
+          { name: 'Home', path: '/' },
+          { name: 'Treatments', path: '/#treatments' },
+          { name: service.fullName ?? service.name, path },
+        ]),
+        ...(service.faqs?.length ? [faqLd(service.faqs)] : []),
+      ]}
+    />
   )
 }
 

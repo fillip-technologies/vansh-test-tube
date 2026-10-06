@@ -1,5 +1,6 @@
 import { TREATMENT_SUMMARIES } from '../data/treatments.js'
 import { serviceHref } from '../lib/services.js'
+import SEO from './seo.json'
 
 // Clinic details used across the site. Fill these in with verified information.
 // Contact details below were provided for the project — confirm with the clinic
@@ -22,9 +23,9 @@ export const CLINIC = {
   emails: ['info@vanshtesttubebaby.com', 'contact@vanshtesttubebaby.com'],
   // Used for the map embed and "Get Directions" — confirm the pin is correct.
   mapQuery: 'Vansh Test Tube Baby, P/13, Vidyapuri, Kankarbagh, Patna, Bihar',
-  // Public site origin for canonical URLs and social previews, e.g.
-  // 'https://www.example.com'. While empty, the current browser origin is used.
-  siteUrl: '',
+  // Public site origin for canonical URLs, sitemap and social previews.
+  // Set in config/seo.json.
+  siteUrl: SEO.siteUrl,
 }
 
 export const CONSULTATION_HREF = '#consultation'

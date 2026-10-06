@@ -1,16 +1,80 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/src/assets/vansh-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      Default SEO for the homepage and for crawlers/link previews that don't run
+      JavaScript. Each page updates these tags at runtime (components/Seo.jsx).
+      Keep in sync with src/config/seo.json and src/config/site.js.
+    -->
+    <title>Vansh Test Tube Baby | IVF &amp; Fertility Centre in Patna, Bihar</title>
+    <meta
+      name="description"
+      content="IVF and fertility care in Patna, Bihar since 2014. Explore IVF, IUI, ICSI and other treatments, meet our doctors and book a consultation at Vansh Test Tube Baby."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.vanshtesttubebaby.com/" />
+    <meta name="theme-color" content="#d94a82" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vansh Test Tube Baby" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:title" content="Vansh Test Tube Baby | IVF &amp; Fertility Centre in Patna, Bihar" />
+    <meta
+      property="og:description"
+      content="IVF and fertility care in Patna, Bihar since 2014. Explore IVF, IUI, ICSI and other treatments, meet our doctors and book a consultation at Vansh Test Tube Baby."
+    />
+    <meta property="og:url" content="https://www.vanshtesttubebaby.com/" />
+    <meta property="og:image" content="https://www.vanshtesttubebaby.com/images/og-default.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vansh Test Tube Baby | IVF &amp; Fertility Centre in Patna, Bihar" />
+    <meta
+      name="twitter:description"
+      content="IVF and fertility care in Patna, Bihar since 2014. Explore IVF, IUI, ICSI and other treatments, meet our doctors and book a consultation at Vansh Test Tube Baby."
+    />
+    <meta name="twitter:image" content="https://www.vanshtesttubebaby.com/images/og-default.jpg" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400..800;1,400..800&family=Manrope:wght@400..800&display=swap"
       rel="stylesheet"
     />
-    <title>Vansh Test Tube Baby</title>
+
+    <!-- Site-wide clinic details (schema.org). Facts from the clinic's website. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "@id": "https://www.vanshtesttubebaby.com/#clinic",
+        "name": "Vansh Test Tube Baby",
+        "description": "IVF and fertility centre in Patna, Bihar, providing treatment for male and female infertility since 2014.",
+        "url": "https://www.vanshtesttubebaby.com/",
+        "logo": "https://www.vanshtesttubebaby.com/icon-512.png",
+        "image": "https://www.vanshtesttubebaby.com/images/og-default.jpg",
+        "foundingDate": "2014",
+        "telephone": ["+91-9386365513", "+91-9631761207"],
+        "email": ["info@vanshtesttubebaby.com", "contact@vanshtesttubebaby.com"],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "P/13, Vidyapuri, Kankarbagh",
+          "addressLocality": "Patna",
+          "addressRegion": "Bihar",
+          "addressCountry": "IN"
+        },
+        "areaServed": "Bihar",
+        "sameAs": ["https://www.facebook.com/VanshTestTubeBaby/"]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

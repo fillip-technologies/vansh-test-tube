@@ -1,4 +1,7 @@
 import CareApproach from '../components/CareApproach.jsx'
+import Seo from '../components/Seo.jsx'
+import { FAQS } from '../data/faqs.js'
+import { SEO, absoluteUrl, faqLd } from '../lib/seo.js'
 import CareTeam from '../components/CareTeam.jsx'
 import ClinicExperience from '../components/ClinicExperience.jsx'
 import Consultation from '../components/Consultation.jsx'
@@ -14,6 +17,12 @@ import WhyVansh from '../components/WhyVansh.jsx'
 export default function Home() {
   return (
     <main>
+      <Seo
+        jsonLd={[
+          { '@type': 'WebSite', name: SEO.siteName, url: absoluteUrl('/') },
+          faqLd(FAQS.map((f) => ({ question: f.q, answer: f.a }))),
+        ]}
+      />
       <Hero />
       <WhyVansh />
       <CareApproach />

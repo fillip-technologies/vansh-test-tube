@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { useLocation } from 'react-router'
+import Seo from '../components/Seo.jsx'
 import heroImg from '../assets/illustrative/clinic-desk.webp'
 import DoctorPortrait from '../components/doctors/DoctorPortrait.jsx'
 import ArrowButton from '../components/ui/ArrowButton.jsx'
@@ -10,6 +11,7 @@ import { ArrowRight } from '../components/ui/icons.jsx'
 import { CLINIC } from '../config/site.js'
 import { DOCTORS } from '../data/doctors.js'
 import useInView, { revealClasses } from '../hooks/useInView.js'
+import { absoluteUrl, breadcrumbLd } from '../lib/seo.js'
 import { consultationHrefFor } from '../lib/services.js'
 
 const EXPECT = [
@@ -61,12 +63,22 @@ export default function Doctors() {
 
   return (
     <main>
-      <title>{`Our Doctors | ${CLINIC.name}, Patna`}</title>
-      <meta
-        name="description"
-        content="Meet the doctors and fertility specialists at Vansh Test Tube Baby, Patna, and book a consultation with our care team."
+      <Seo
+        title={`Our Doctors | Fertility Specialists at ${CLINIC.name}, Patna`}
+        description={`Meet the doctors at ${CLINIC.name}, Patna — ${DOCTORS.map((d) => d.name).join(', ')} — and book a consultation with our fertility care team.`}
+        jsonLd={[
+          {
+            '@type': 'CollectionPage',
+            name: 'Our Doctors',
+            url: absoluteUrl('/doctors'),
+            mainEntity: {
+              '@type': 'ItemList',
+              itemListElement: DOCTORS.map((d, i) => ({ '@type': 'ListItem', position: i + 1, url: absoluteUrl(d.profileHref), name: d.name })),
+            },
+          },
+          breadcrumbLd([{ name: 'Home', path: '/' }, { name: 'Doctors', path: '/doctors' }]),
+        ]}
       />
-      <link rel="canonical" href={`${CLINIC.siteUrl || window.location.origin}/doctors`} />
 
       {/* Hero */}
       <section

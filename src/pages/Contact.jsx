@@ -1,11 +1,13 @@
 import { useRef } from 'react'
 import Consultation from '../components/Consultation.jsx'
+import Seo from '../components/Seo.jsx'
 import ArrowButton from '../components/ui/ArrowButton.jsx'
 import { Blob, Dots, Rings } from '../components/ui/Decor.jsx'
 import Eyebrow from '../components/ui/Eyebrow.jsx'
 import { ArrowRight, Facebook, Mail, MapPin, Navigation, Phone } from '../components/ui/icons.jsx'
 import { CLINIC, SOCIAL_LINKS, mapsDirectionsUrl, mapsEmbedUrl } from '../config/site.js'
 import useInView, { revealClasses } from '../hooks/useInView.js'
+import { CLINIC_ID, absoluteUrl, breadcrumbLd } from '../lib/seo.js'
 
 // All details come from config/site.js (verified against the clinic's
 // previous website). No opening hours are shown — none were published.
@@ -255,12 +257,14 @@ function NextSteps() {
 export default function Contact() {
   return (
     <main>
-      <title>{`Contact Us | ${CLINIC.name}, Patna`}</title>
-      <meta
-        name="description"
-        content={`Contact ${CLINIC.name} in Kankarbagh, Patna. Call ${CLINIC.phones[0].display}, email ${CLINIC.emails[0]} or request a fertility consultation online.`}
+      <Seo
+        title="Contact Vansh Test Tube Baby | Fertility & IVF Clinic in Kankarbagh, Patna"
+        description={`Contact ${CLINIC.name} at P/13, Vidyapuri, Kankarbagh, Patna. Call ${CLINIC.phones[0].display}, email ${CLINIC.emails[0]} or request a fertility consultation online.`}
+        jsonLd={[
+          { '@type': 'ContactPage', name: 'Contact Vansh Test Tube Baby', url: absoluteUrl('/contact'), about: { '@id': CLINIC_ID } },
+          breadcrumbLd([{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]),
+        ]}
       />
-      <link rel="canonical" href={`${CLINIC.siteUrl || window.location.origin}/contact`} />
       <ContactHero />
       <WaysToReach />
       <MapSection />

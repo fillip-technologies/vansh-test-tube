@@ -1,4 +1,5 @@
 import { CLINIC } from '../config/site.js'
+import Seo from '../components/Seo.jsx'
 import ArrowButton from '../components/ui/ArrowButton.jsx'
 import SmartLink from '../components/ui/SmartLink.jsx'
 
@@ -6,8 +7,7 @@ import SmartLink from '../components/ui/SmartLink.jsx'
 export default function NotFound({ title = 'Page Not Found', message }) {
   return (
     <main className="bg-background px-4 pt-40 pb-24 sm:px-6 lg:px-8 lg:pt-48 lg:pb-32">
-      <title>{`${title} | ${CLINIC.name}`}</title>
-      <meta name="robots" content="noindex" />
+      <Seo title={`${title} | ${CLINIC.name}`} noindex />
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-label text-primary-500 uppercase">404</p>
         <h1 className="mt-4 text-h2 text-balance text-secondary-800">{title}</h1>

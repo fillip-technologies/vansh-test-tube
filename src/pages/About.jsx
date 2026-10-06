@@ -4,6 +4,7 @@ import heroImg from '../assets/vansh-approach.webp'
 import storyImg from '../assets/vansh-consultation-1200.webp'
 import DoctorPortrait from '../components/doctors/DoctorPortrait.jsx'
 import FinalCta from '../components/FinalCta.jsx'
+import Seo from '../components/Seo.jsx'
 import ArrowButton from '../components/ui/ArrowButton.jsx'
 import { Blob, Dots, Rings } from '../components/ui/Decor.jsx'
 import Eyebrow from '../components/ui/Eyebrow.jsx'
@@ -13,6 +14,7 @@ import { CLINIC } from '../config/site.js'
 import { DOCTORS } from '../data/doctors.js'
 import { TREATMENT_SUMMARIES } from '../data/treatments.js'
 import useInView, { revealClasses } from '../hooks/useInView.js'
+import { CLINIC_ID, absoluteUrl, breadcrumbLd } from '../lib/seo.js'
 import { consultationHrefFor, serviceHref } from '../lib/services.js'
 
 // Facts from the clinic's previous website: established 2014 in Patna;
@@ -389,12 +391,14 @@ export default function About() {
   const consultHref = consultationHrefFor(useLocation().pathname)
   return (
     <main>
-      <title>{`About Vansh | Fertility & IVF Care in Patna Since ${CLINIC.since}`}</title>
-      <meta
-        name="description"
-        content={`Vansh Test Tube Baby has provided fertility and IVF care in Patna, Bihar since ${CLINIC.since} — treating male and female infertility with personalized guidance and emotional counselling.`}
+      <Seo
+        title={`About Vansh Test Tube Baby | Fertility & IVF Care in Patna Since ${CLINIC.since}`}
+        description={`Vansh Test Tube Baby has provided fertility and IVF care in Patna, Bihar since ${CLINIC.since} — treating male and female infertility with personalized guidance and emotional counselling.`}
+        jsonLd={[
+          { '@type': 'AboutPage', name: 'About Vansh Test Tube Baby', url: absoluteUrl('/about'), about: { '@id': CLINIC_ID } },
+          breadcrumbLd([{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }]),
+        ]}
       />
-      <link rel="canonical" href={`${CLINIC.siteUrl || window.location.origin}/about`} />
       <AboutHero consultHref={consultHref} />
       <Story />
       <WhatWeDo />

@@ -1,4 +1,5 @@
 import { useLocation, useParams } from 'react-router'
+import Seo from '../components/Seo.jsx'
 import DoctorPortrait from '../components/doctors/DoctorPortrait.jsx'
 import ArrowButton from '../components/ui/ArrowButton.jsx'
 import { Blob } from '../components/ui/Decor.jsx'
@@ -6,6 +7,7 @@ import SmartLink from '../components/ui/SmartLink.jsx'
 import { ArrowRight, Check } from '../components/ui/icons.jsx'
 import { CLINIC } from '../config/site.js'
 import { DOCTORS, getDoctorBySlug } from '../data/doctors.js'
+import { CLINIC_ID, absoluteUrl, breadcrumbLd } from '../lib/seo.js'
 import { consultationHrefFor } from '../lib/services.js'
 import { DiscussCta } from './Doctors.jsx'
 import NotFound from './NotFound.jsx'
@@ -25,9 +27,27 @@ export default function DoctorProfile() {
 
   return (
     <main key={doctor.id}>
-      <title>{`${doctor.name}, ${doctor.designation} | ${CLINIC.name}`}</title>
-      <meta name="description" content={`${doctor.name}, ${doctor.designation} at ${CLINIC.name}, Patna.`} />
-      <link rel="canonical" href={`${CLINIC.siteUrl || window.location.origin}${doctor.profileHref}`} />
+      <Seo
+        title={`${doctor.name}, ${doctor.designation} | ${CLINIC.name}, Patna`}
+        description={`${doctor.name} (${doctor.qualification.join(', ')}) is ${/^[aeiou]/i.test(doctor.designation) ? 'an' : 'a'} ${doctor.designation} at ${CLINIC.name}, Patna. Book a consultation with our fertility care team.`}
+        type="profile"
+        image={doctor.image || undefined}
+        jsonLd={[
+          {
+            '@type': 'Person',
+            name: doctor.name,
+            jobTitle: doctor.designation,
+            url: absoluteUrl(doctor.profileHref),
+            ...(doctor.image ? { image: absoluteUrl(doctor.image) } : {}),
+            worksFor: { '@id': CLINIC_ID },
+          },
+          breadcrumbLd([
+            { name: 'Home', path: '/' },
+            { name: 'Doctors', path: '/doctors' },
+            { name: doctor.name, path: doctor.profileHref },
+          ]),
+        ]}
+      />
 
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-background px-4 pt-28 pb-14 sm:px-6 sm:pt-32 lg:px-8 lg:pt-36 lg:pb-20">
