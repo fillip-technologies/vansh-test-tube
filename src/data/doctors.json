@@ -1,0 +1,62 @@
+[
+  {
+    "id": "sagar-dulal-sinha",
+    "name": "Dr. Sagar Dulal Sinha",
+    "designation": "Clinical Doctor",
+    "qualification": ["MS (Pat)", "PGDUS (Chennai)", "F.I.C.O.G.", "F.I.C.M.C.H.", "Asso. M.R.C.O.G. (Eng.)"],
+    "registration": "Reg. No. 22041 (BMC)",
+    "specialization": [],
+    "experience": "",
+    "bio": "",
+    "image": "",
+    "profileSlug": "dr-sagar-dulal-sinha"
+  },
+  {
+    "id": "neelam",
+    "name": "Dr. Neelam",
+    "designation": "Senior Consultant",
+    "qualification": ["M.B.B.S.", "DGO", "MD", "F.I.C.O.G."],
+    "registration": "Reg. No. 14589 (BMC)",
+    "specialization": [],
+    "experience": "",
+    "bio": "",
+    "image": "",
+    "profileSlug": "dr-neelam"
+  },
+  {
+    "id": "biplab-deb",
+    "name": "Dr. Biplab Deb",
+    "designation": "Chief Consultant",
+    "qualification": ["FNB (Rep. Med.)", "MD (Gold Medalist)", "MNAMS", "FICMCH", "D.N.B.", "F.M.A.S.", "DMAS"],
+    "registration": "Reg. No. 53554 (WBMC)",
+    "specialization": [],
+    "experience": "",
+    "bio": "",
+    "image": "",
+    "profileSlug": "dr-biplab-deb"
+  },
+  {
+    "id": "mamta",
+    "name": "Dr. Mamta",
+    "designation": "Consultant & Counsellor",
+    "qualification": ["MBBS"],
+    "registration": "",
+    "specialization": [],
+    "experience": "",
+    "bio": "",
+    "image": "",
+    "profileSlug": "dr-mamta"
+  },
+  {
+    "id": "mallika-singh",
+    "name": "Dr. Mallika Singh",
+    "designation": "Consultant",
+    "qualification": ["M.B.B.S.", "MD"],
+    "registration": "Reg. No. 31667 (BMC)",
+    "specialization": [],
+    "experience": "",
+    "bio": "",
+    "image": "",
+    "profileSlug": "dr-mallika-singh"
+  }
+]

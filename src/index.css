@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+@import './styles/theme.css';
+@import './styles/typography.css';
+@import './styles/hero.css';
+
+/* Layout and effect tokens. Colors: styles/theme.css. Type: styles/typography.css. */
+@theme {
+  --container-site: 86.25rem; /* 1380px — shared max width of header and hero */
+
+  /* Soft, charcoal-tinted shadows for floating cards. */
+  --shadow-float:
+    0 1px 2px color-mix(in srgb, var(--color-secondary-900) 4%, transparent),
+    0 12px 32px -12px color-mix(in srgb, var(--color-secondary-900) 14%, transparent);
+  --shadow-float-sm:
+    0 1px 2px color-mix(in srgb, var(--color-secondary-900) 4%, transparent),
+    0 6px 18px -10px color-mix(in srgb, var(--color-secondary-900) 12%, transparent);
+
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.6s ease-out both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Decorative dot grid (see components/ui/Decor.jsx). */
+@utility decor-dots {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--color-primary-300) 55%, transparent) 1.2px,
+    transparent 1.6px
+  );
+  background-size: 20px 20px;
+  mask-image: radial-gradient(ellipse at center, #000 25%, transparent 72%);
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    overflow-x: clip;
+  }
+
+  /* In-page anchor links glide to their target and clear the fixed header. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  [id] {
+    scroll-margin-top: 7.5rem;
+  }
+
+  body {
+    @apply bg-background text-text-primary antialiased;
+    overflow-x: clip;
+  }
+
+  /* Tailwind's default border color is currentColor; use the brand border. */
+  *,
+  ::before,
+  ::after {
+    @apply border-border;
+  }
+}
